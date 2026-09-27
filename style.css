@@ -1,0 +1,200 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #7dd3fc;
+}
+
+/* Escena Principal */
+.stage {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Mapa Vectorial */
+.map-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Etiquetas de Ciudades */
+.city-tag {
+  position: absolute;
+  background: rgba(15, 23, 42, 0.85);
+  color: #ffffff;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  border: 2px solid #38bdf8;
+  z-index: 5;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.city-cali {
+  top: 18%;
+  left: 14%;
+}
+
+.city-pasto {
+  bottom: 22%;
+  right: 21%;
+}
+
+/* Animación del Carrito siguiendo la ruta */
+.traveler-group {
+  offset-path: path("M 180 140 C 400 200, 300 420, 750 460");
+  offset-rotate: auto;
+  animation: driveRoute 7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes driveRoute {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+/* Foto de Ella sobre el carro */
+.photo-wrapper {
+  width: 60px;
+  height: 60px;
+}
+
+.passenger-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid #ec4899;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  background: #ffffff;
+}
+
+/* Escena de Entrega de Rosas en Pasto */
+.meeting-scene {
+  position: absolute;
+  bottom: 18%;
+  right: 12%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  opacity: 0;
+  transform: translateY(20px) scale(0.9);
+  animation: showMeeting 0.8s ease forwards 7.3s;
+  z-index: 20;
+  background: rgba(15, 23, 42, 0.92);
+  padding: 18px 24px;
+  border-radius: 20px;
+  border: 2px solid #f43f5e;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+}
+
+/* Contenedor horizontal para las fotos y las rosas */
+.meeting-scene > div:not(.love-message):not(.replay-btn) {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+@keyframes showMeeting {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Fotos de la pareja */
+.person-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.my-photo {
+  border: 3px solid #3b82f6;
+}
+
+.her-photo {
+  border: 3px solid #ec4899;
+}
+
+/* Ramo de Rosas */
+.bouquet-container {
+  width: 70px;
+  height: 80px;
+  transform: scale(0) rotate(-40deg);
+  animation: giveRoses 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 8s;
+}
+
+.bouquet-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@keyframes giveRoses {
+  to {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Mensaje personalizado */
+.love-message {
+  position: absolute;
+  top: -42px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #f43f5e;
+  color: #ffffff;
+  padding: 8px 20px;
+  border-radius: 14px;
+  font-weight: bold;
+  font-size: 1rem;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Botón de Ver de Nuevo */
+.replay-btn {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: #ffffff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: all 0.2s ease;
+  margin-top: 4px;
+}
+
+.replay-btn:hover {
+  background: linear-gradient(135deg, #0369a1, #075985);
+  transform: scale(1.05);
+}
+
+.replay-btn:active {
+  transform: scale(0.95);
+}
